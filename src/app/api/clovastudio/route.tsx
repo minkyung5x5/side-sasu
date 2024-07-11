@@ -9,7 +9,7 @@ interface Message {
 const CLOVASTUDIO_API_URL = 'https://api-laas.wanted.co.kr/api/preset/chat/completions';
 const CLOVASTUDIO_API_KEY = '769d77733347efe67fa68cc117faeeaf94576566be30063ee3e9f25463db70ad';
 
-export async function sendMessage(messages: Message[]) {
+export async function POST(messages: Message[]) {
     try {
         const response = await axios.post(CLOVASTUDIO_API_URL, {
             hash: 'c06fc3a100c5d48e5b704639f509078cc0e0ea7fa2209c0bb3971a5ae1b60975',

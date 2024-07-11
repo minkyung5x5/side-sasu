@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { Input, Button, List, Avatar, Card } from 'antd';
-import { sendMessage } from '@/app/api/clovastudio/route';
+import { POST } from '@/app/api/clovastudio/route';
 import Search from 'antd/es/input/Search';
 
 interface Message {
@@ -23,7 +23,7 @@ const Chat = () => {
 
     const fetchAPI = async (newMessages: Message[]): Promise<Message> => {
         try {
-            const response = await sendMessage(newMessages);
+            const response = await POST(newMessages);
             return response.choices[0].message;
         } catch (error) {
             console.error('Error fetching bot response:', error);
