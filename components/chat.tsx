@@ -1,6 +1,6 @@
 "use client"
 import { useState } from 'react';
-import { Input, Button, List } from 'antd';
+import { Input, Button, List, Avatar, Card } from 'antd';
 
 // 가짜 데이터 (임시로 사용)
 const initialMessages = [
@@ -32,21 +32,18 @@ const Chat = () => {
             <div className="h-20 p-4 border-b-2 border-indigo-300 flex items-center">
                 <div className="text-xl font-bold">Onboarding</div>
             </div>
-            <div className="h-full overflow-y-auto flex flex-col justify-between max-w-screen-md mx-auto p-4">
-                <div className="overflow-y-auto">
-                    <List
-                        itemLayout="horizontal"
-                        dataSource={messages}
-                        renderItem={(item) => (
-                            <List.Item className={`text-${item.sender === 'user' ? 'right' : 'left'}`}>
-                                <List.Item.Meta
-                                    title={item.sender === 'user' ? 'You' : 'Other'}
-                                    description={item.text}
-                                />
-                            </List.Item>
-                        )}
-                    />
-                </div>
+
+            {/* <div className="h-full overflow-y-auto flex flex-col justify-between max-w-screen-md mx-auto p-4"> */}
+            <div className="h-full p-4">
+                {messages.map((item, index) => (
+
+                    <Card key={item.id} size="small">
+                        <div className='flex flex-row-reverse'>
+                            <Avatar size="small" src={`https://api.dicebear.com/7.x/miniavs/svg?seed=1`} />
+                            <div>{item.text}</div>
+                        </div>
+                    </Card>
+                ))}
             </div>
 
             <div className="fixed w-1/2 bottom-0 left-0 p-4">
