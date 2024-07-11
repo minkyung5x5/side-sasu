@@ -28,11 +28,11 @@ const Chat = () => {
     };
 
     return (
-        <div className='relative h-screen w-full'>
+        <div className="w-1/2 border-r-2 border-indigo-600">
             <div className="h-20 p-4 border-b-2 border-indigo-300 flex items-center">
                 <div className="text-xl font-bold">Onboarding</div>
             </div>
-            <div className="overflow-y-auto h-96 flex flex-col justify-between max-w-screen-md mx-auto p-4">
+            <div className="h-full overflow-y-auto flex flex-col justify-between max-w-screen-md mx-auto p-4">
                 <div className="overflow-y-auto">
                     <List
                         itemLayout="horizontal"
@@ -48,18 +48,21 @@ const Chat = () => {
                     />
                 </div>
             </div>
-            <div className="fixed w-1/2 p-4 bottom-0 left-0 pl-4 flex items-center justify-center space-x-4 flex ">
-                <Input
-                    placeholder="Type your message..."
-                    value={inputValue}
-                    onChange={(e) => setInputValue(e.target.value)}
-                    onPressEnter={handleMessageSend}
-                />
-                <Button type="primary" onClick={handleMessageSend}>
-                    Send
-                </Button>
-            </div>
 
+            <div className="fixed w-1/2 bottom-0 left-0 p-4">
+                <div className='flex items-center justify-center space-x-2'>
+                    <Input
+                        placeholder="Type your message..."
+                        value={inputValue}
+                        onChange={(e) => setInputValue(e.target.value)}
+                        onPressEnter={handleMessageSend}
+                    />
+                    <Button type="primary" onClick={handleMessageSend}>
+                        Send
+                    </Button>
+                </div>
+
+            </div>
         </div>
     );
 };
