@@ -19,7 +19,6 @@ const Chat = () => {
         if (scrollRef.current) {
             scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
         }
-        console.log(messages)
     }, [messages]);
 
     const fetchAPI = async (newMessages: Message[]): Promise<Message> => {
