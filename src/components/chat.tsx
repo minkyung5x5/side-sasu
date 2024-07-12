@@ -1,18 +1,15 @@
 "use client"
 
 import { useEffect, useRef, useState } from 'react';
-import { Input, Button, List, Avatar, Card } from 'antd';
-import { POST } from '@/app/api/clovastudio/route';
+import { Avatar, Card } from 'antd';
 import Search from 'antd/es/input/Search';
+import { Messages } from '@/type/Messages';
+import { postToClova } from '@/apiClient/apiClient';
 
-interface Message {
-    role: 'user' | 'assistant';
-    content: string;
-}
 
 const Chat = () => {
     const scrollRef = useRef<HTMLDivElement>(null);
-    const [messages, setMessages] = useState<Message[]>([]);
+    const [messages, setMessages] = useState<Messages[]>([]);
     const [inputValue, setInputValue] = useState('');
 
     useEffect(() => {
@@ -21,10 +18,10 @@ const Chat = () => {
         }
     }, [messages]);
 
-    const fetchAPI = async (newMessages: Message[]): Promise<Message> => {
+    const handlePostToClova = async (newMessages: Messages[]): Promise<Messages> => {
         try {
-            const response = await POST(newMessages);
-            return response.choices[0].message;
+            const message = await postToClova(newMessages)
+            return message;
         } catch (error) {
             console.error('Error fetching bot response:', error);
             return { role: 'assistant', content: 'Error fetching response. Please try again.' };
@@ -33,13 +30,11 @@ const Chat = () => {
 
     const handleSubmit = async (value: string) => {
         if (!inputValue.trim()) return;
-
-        const userMessage = inputValue;
-        const newMessages: Message[] = [...messages, { role: 'user', content: inputValue }];
+        const newMessages: Messages[] = [...messages, { role: 'user', content: inputValue }];
         setMessages([...newMessages, { role: 'assistant', content: '...' }]);
         setInputValue('');
 
-        const botMessage = await fetchAPI(newMessages);
+        const botMessage = await handlePostToClova(newMessages);
         setMessages((prevMessages) => [
             ...prevMessages.slice(0, -1),
             botMessage,
