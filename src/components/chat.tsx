@@ -8,6 +8,7 @@ import { Messages } from '@/type/Messages';
 import { postToClova } from '@/apiClient/apiClient';
 import OnboarderIcon from "../img/OnboarderIcon.svg";
 import Image from 'next/image';
+import Setting from './setting';
 
 const Chat = () => {
     const scrollRef = useRef<HTMLDivElement>(null);
@@ -45,8 +46,9 @@ const Chat = () => {
 
     return (
         <div className="relative w-full md:max-w-4xl flex flex-col bg-indigo-50">
-            <div className="h-20 p-4 border-b-2 border-indigo-300 flex items-center">
+            <div className="h-20 p-4 border-b-2 border-indigo-300 flex items-center justify-between">
                 <div className="text-xl font-bold text-indigo-600">{'Onboarder'}</div>
+                <Setting />
             </div>
 
             <div className="flex-1 overflow-y-auto p-4" ref={scrollRef}>
@@ -57,7 +59,7 @@ const Chat = () => {
                                 <Avatar className="shrink-0" size="small" src={`https://api.dicebear.com/7.x/miniavs/svg?seed=5`} />
                             )}
                             {item.role === 'assistant' && (
-                                <Icon component={() => (<Image className="w-6 mb-auto" src={OnboarderIcon} alt="logo" />)} />
+                                <Icon className="shrink-0" component={() => (<Image className="w-6 mb-auto" src={OnboarderIcon} alt="logo" />)} />
                             )}
                             <div className='whitespace-pre-wrap'>{item.content}</div>
                         </div>
@@ -67,11 +69,11 @@ const Chat = () => {
 
             <div className="h-max p-4">
                 <Search
-                    placeholder="Type your message..."
+                    placeholder="메시지를 입력해주세요"
                     value={inputValue}
                     onChange={(e) => setInputValue(e.target.value)}
                     onSearch={(value) => handleSubmit(value)}
-                    enterButton="Search"
+                    enterButton="보내기"
                 />
 
             </div>
