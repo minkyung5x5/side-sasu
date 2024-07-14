@@ -17,7 +17,6 @@ export async function POST(request: Request) {
             headers,
             body: JSON.stringify(req),
         });
-        console.log(headers, response)
         if (!response.ok) {
             throw new Error(`Failed to write data to CLOVA API: ${response.statusText}`);
         }
