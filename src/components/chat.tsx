@@ -2,10 +2,12 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { Avatar, Card } from 'antd';
+import Icon from '@ant-design/icons';
 import Search from 'antd/es/input/Search';
 import { Messages } from '@/type/Messages';
 import { postToClova } from '@/apiClient/apiClient';
-
+import OnboarderIcon from "../img/OnboarderIcon.svg";
+import Image from 'next/image';
 
 const Chat = () => {
     const scrollRef = useRef<HTMLDivElement>(null);
@@ -43,7 +45,7 @@ const Chat = () => {
 
     return (
         <div className="relative w-full md:max-w-4xl flex flex-col bg-indigo-50">
-            <div className="h-20 p-2 md:p-4 border-b-2 border-indigo-300 flex items-center">
+            <div className="h-20 p-4 border-b-2 border-indigo-300 flex items-center">
                 <div className="text-xl font-bold text-indigo-600">{'Onboarder'}</div>
             </div>
 
@@ -52,10 +54,10 @@ const Chat = () => {
                     <Card key={index} size="small" className={`mb-2 w-fit ${item.role === 'user' ? 'ml-auto' : 'mr-auto'}`}>
                         <div className={`mr-auto flex space-x-2 ${item.role === 'user' ? 'flex-row-reverse space-x-reverse' : ''}`}>
                             {item.role === 'user' && (
-                                <Avatar className="shrink-0" size="small" src={`https://api.dicebear.com/7.x/miniavs/svg?seed=4`} />
+                                <Avatar className="shrink-0" size="small" src={`https://api.dicebear.com/7.x/miniavs/svg?seed=5`} />
                             )}
                             {item.role === 'assistant' && (
-                                <Avatar className="shrink-0" size="small" src={`https://api.dicebear.com/7.x/miniavs/svg?seed=1`} />
+                                <Icon component={() => (<Image className="w-6 mb-auto" src={OnboarderIcon} alt="logo" />)} />
                             )}
                             <div className='whitespace-pre-wrap'>{item.content}</div>
                         </div>
