@@ -51,7 +51,12 @@ const Chat = () => {
                 {messages.map((item, index) => (
                     <Card key={index} size="small" className={`mb-2 w-fit ${item.role === 'user' ? 'ml-auto' : 'mr-auto'}`}>
                         <div className={`mr-auto flex space-x-2 ${item.role === 'user' ? 'flex-row-reverse space-x-reverse' : ''}`}>
-                            <Avatar className="shrink-0" size="small" src={`https://api.dicebear.com/7.x/miniavs/svg?seed=3`} />
+                            {item.role === 'user' && (
+                                <Avatar className="shrink-0" size="small" src={`https://api.dicebear.com/7.x/miniavs/svg?seed=4`} />
+                            )}
+                            {item.role === 'assistant' && (
+                                <Avatar className="shrink-0" size="small" src={`https://api.dicebear.com/7.x/miniavs/svg?seed=1`} />
+                            )}
                             <div className='whitespace-pre-wrap'>{item.content}</div>
                         </div>
                     </Card>
