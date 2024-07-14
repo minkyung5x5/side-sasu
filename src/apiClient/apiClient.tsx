@@ -11,7 +11,7 @@ export const clovaApiClient = async (method: string, messages: Messages[]): Prom
 
     const bodyData = {
         hash: CLOVA_HASH,
-        params: JSON.parse(localStorage.getItem('params') || ''),
+        params: JSON.parse(localStorage.getItem('params') || '{}'),
         messages,
     };
 

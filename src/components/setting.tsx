@@ -24,7 +24,6 @@ const Setting: React.FC = () => {
 
     const getParams = () => {
         const storedParams = localStorage.getItem('params');
-        console.log(storedParams)
         if (storedParams) {
             form.setFieldsValue(JSON.parse(storedParams));
         }
