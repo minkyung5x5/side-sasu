@@ -9,7 +9,7 @@ import { postToClova } from '@/apiClient/apiClient';
 
 const Chat = () => {
     const scrollRef = useRef<HTMLDivElement>(null);
-    const [messages, setMessages] = useState<Messages[]>([]);
+    const [messages, setMessages] = useState<Messages[]>([{ role: 'assistant', content: "안녕하세요! '온보더'입니다. \n온보딩을 함께하기 위해서 '이름'과 '직무'를 알려주세요!" }]);
     const [inputValue, setInputValue] = useState('');
 
     useEffect(() => {
