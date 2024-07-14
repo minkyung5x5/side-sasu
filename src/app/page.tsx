@@ -1,23 +1,22 @@
-import Chat from "@/components/chat";
+import { Button } from "antd";
+import Image from 'next/image';
+import OnborderSVG from '../img/Onboarder.svg'
+import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className="flex h-screen bg-indigo-50">
-      <div className="w-1/4 border-r-2 border-indigo-600">
-        <div className="h-20 p-4 border-b-2 border-indigo-300 flex items-center">
-          <div className="text-xl font-bold">{'Messages'}</div>
+    <main className="flex justify-center h-screen bg-indigo-100">
+      <div className="relative w-full md:max-w-4xl flex items-center flex-col bg-indigo-50">
+        <div className="flex-1 overflow-y-auto p-4 flex flex-col justify-center space-y-20">
+          <Image className="w-full mx-auto" src={OnborderSVG} alt="logo" />
+          <p className="text-center whitespace-pre-wrap">
+            {'환영합니다!\n 온보딩을 도와드릴 AI 챗봇, \'온보더\'입니다. \n 함께 온보딩해볼까요? '}
+          </p>
         </div>
-        <div className="flex flex-col divide-y divide-indigo-300">
-          <div className="px-4 py-6 text-lg">{'온보딩'}</div>
-          <div className="px-4 py-6 text-lg">{'기획자'}</div>
-          <div className="px-4 py-6 text-lg">{'디자이너'}</div>
-          <div className="px-4 py-6 text-lg">{'개발자'}</div>
-        </div>
-      </div>
-      <Chat />
-      <div className="w-1/4">
-        <div className="h-20 p-4 border-b-2 border-indigo-300 flex items-center">
-          <div className="text-xl font-bold">{'Track your progress'}</div>
+        <div className="h-max p-4 w-full md:w-80">
+          <Link className="w-full" href="/onboarder">
+            <Button className="w-full" type="primary" size="large">{'시작하기'}</Button>
+          </Link>
         </div>
       </div>
     </main>
