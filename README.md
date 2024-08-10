@@ -1,4 +1,21 @@
+# Onboarder - 나만의 AI 사수
 
+## 배포 주소 - https://side-sasu.vercel.app/
+
+### 빌드 방법
+
+1. 깃헙 레포지토리 클론
+
+   ```$ git clone https://github.com/minkyung5x5/side-sasu.git```
+2. Terminal에서 패키지 설치
+   
+   ```$ npm install```
+   
+4. Terminal에서 실행
+   
+   ```$ npm run dev```
+
+## 프로젝트 소개
 
 ![Onboarder-0](https://github.com/user-attachments/assets/dffa1b69-c539-4b5e-913f-5fc35fbb2131)
 ![Onboarder-1](https://github.com/user-attachments/assets/368625e1-e24d-4ee4-b45f-a4b9e57cac6e)
